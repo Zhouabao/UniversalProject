@@ -10,6 +10,7 @@ import es.dmoral.toasty.Toasty;
  */
 
 public class ToastUtil {
+
     public static void toastSuccess(Context context, String msg, int time, boolean withIcon) {
         Toasty.success(context, msg, time, withIcon).show();
     }
