@@ -2,8 +2,7 @@ package com.yuzhua.universalinvinciblesdk.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import com.yuzhua.toolslibrary.Constant;
+import com.yuzhua.universalinvinciblesdk.Constant;
 
 import java.util.ArrayList;
 import java.util.List;

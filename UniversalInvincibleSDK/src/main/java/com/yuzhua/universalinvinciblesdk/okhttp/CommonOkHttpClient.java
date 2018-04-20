@@ -1,10 +1,12 @@
 package com.yuzhua.universalinvinciblesdk.okhttp;
 
-import com.yuzhua.toolslibrary.okhttp.cookie.SimpleCookieJar;
-import com.yuzhua.toolslibrary.okhttp.https.HttpsUtils;
-import com.yuzhua.toolslibrary.okhttp.listener.DisposeDataHandle;
-import com.yuzhua.toolslibrary.okhttp.response.CommonFileCallback;
-import com.yuzhua.toolslibrary.okhttp.response.CommonJsonCallback;
+
+
+import com.yuzhua.universalinvinciblesdk.okhttp.cookie.SimpleCookieJar;
+import com.yuzhua.universalinvinciblesdk.okhttp.https.HttpsUtils;
+import com.yuzhua.universalinvinciblesdk.okhttp.listener.DisposeDataHandle;
+import com.yuzhua.universalinvinciblesdk.okhttp.response.CommonFileCallback;
+import com.yuzhua.universalinvinciblesdk.okhttp.response.CommonJsonCallback;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

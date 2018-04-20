@@ -4,9 +4,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.yuzhua.toolslibrary.okhttp.exception.OkHttpException;
-import com.yuzhua.toolslibrary.okhttp.listener.DisposeDataHandle;
-import com.yuzhua.toolslibrary.okhttp.listener.DisposeDownloadListener;
+
+import com.yuzhua.universalinvinciblesdk.okhttp.exception.OkHttpException;
+import com.yuzhua.universalinvinciblesdk.okhttp.listener.DisposeDataHandle;
+import com.yuzhua.universalinvinciblesdk.okhttp.listener.DisposeDownloadListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
