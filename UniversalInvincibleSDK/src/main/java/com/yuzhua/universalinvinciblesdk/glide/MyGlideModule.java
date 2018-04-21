@@ -20,7 +20,7 @@ import java.io.InputStream;
 /**
  * @author Zhou Fengmei
  * @create 2018/4/20
- * @Describe  提交
+ * @Describe 方便
  */
 @GlideModule
 public class MyGlideModule extends AppGlideModule {
@@ -37,7 +37,7 @@ public class MyGlideModule extends AppGlideModule {
 //        builder.setBitmapPool(new LruBitmapPool(customBitmapPoolSize));
 
         //内存缓存相关,默认是24m
-        int memoryCacheSizeBytes = 1024 * 1024 * 20; // 20mb
+        int memoryCacheSizeBytes = 1024 * 1024 * 20; // 20MB
         builder.setMemoryCache(new LruResourceCache(memoryCacheSizeBytes));
 
 

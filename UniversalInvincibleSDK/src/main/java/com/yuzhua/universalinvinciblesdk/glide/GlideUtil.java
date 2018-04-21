@@ -27,8 +27,9 @@ import com.yuzhua.universalinvinciblesdk.R;
 import java.io.File;
 
 /**
- * glide工具类
- * Created by Zhou Fengmei on 2018/4/12.
+ * @author Zhou Fengmei
+ * @create 2018/4/20
+ * @Describe glide模板
  */
 
 public class GlideUtil {
