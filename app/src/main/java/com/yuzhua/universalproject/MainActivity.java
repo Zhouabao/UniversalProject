@@ -1,41 +1,185 @@
 package com.yuzhua.universalproject;
 
-import android.app.Activity;
+import android.Manifest;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.yuzhua.universalinvinciblesdk.glide.GlideUtil;
-import com.yuzhua.universalinvinciblesdk.util.ui.MyLoader;
+import com.yuzhua.universalproject.util.ShareSDKUtils;
+
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.tencent.qzone.QZone;
+import cn.sharesdk.wechat.friends.Wechat;
+import cn.sharesdk.wechat.moments.WechatMoments;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
-public class MainActivity extends AppCompatActivity {
-
-
-    @BindView(R.id.btn)
-    Button btn;
-    @BindView(R.id.image)
-    ImageView image;
-    @BindView(R.id.image2)
-    ImageView image2;
+public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks, PlatformActionListener {
+    private static int REQUEST_CODE_CAMERA = 1001;
+    String[] perms = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    @BindView(R.id.userName)
+    TextView userName;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_layout);
+        setContentView(R.layout.main);
         ButterKnife.bind(this);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyLoader.showLoading(MainActivity.this);
-                GlideUtil.loadRoundImg(MainActivity.this, "https://ws1.sinaimg.cn/large/610dc034ly1fir1jbpod5j20ip0newh3.jpg", image, R.mipmap.ic_launcher, R.mipmap.ic_launcher, 180);
-//                GlideUtil.loadRoundImg(MainActivity.this,"https://ws1.sinaimg.cn/large/610dc034ly1fis7dvesn6j20u00u0jt4.jpg",image2);
-                GlideUtil.loadImg(MainActivity.this,"https://ws1.sinaimg.cn/large/610dc034ly1fir1jbpod5j20ip0newh3.jpg",image2);
-            }
-        });
+
     }
+
+    @OnClick({R.id.cl1, R.id.cl2, R.id.cl3, R.id.cl4, R.id.cl5, R.id.cl6, R.id.cl7})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.cl1://微信好友
+                ShareSDKUtils.shareWX("分享内容", "", "", "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=275372394,2501331271&fm=27&gp=0.jpg",
+                        Wechat.NAME, Platform.SHARE_IMAGE, MainActivity.this);
+                break;
+            case R.id.cl2://微信朋友圈
+                if (!EasyPermissions.hasPermissions(this, perms)) {
+                    EasyPermissions.requestPermissions(this, "内存读取权限", REQUEST_CODE_CAMERA, perms);
+                } else {
+                    ShareSDKUtils.shareWX("分享内容", "分享测试", "https://www.baidu.com",
+                            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=275372394,2501331271&fm=27&gp=0.jpg",
+                            WechatMoments.NAME, Platform.SHARE_IMAGE, MainActivity.this);
+                }
+                break;
+            case R.id.cl3://QQ好友
+                ShareSDKUtils.shareQQ("分享内容", "https://www.baidu.com", "分享测试",
+                        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=275372394,2501331271&fm=27&gp=0.jpg",
+                        "", "", QQ.NAME, MainActivity.this);
+                break;
+            case R.id.cl4://QQ空间
+                ShareSDKUtils.shareQQ("分享内容", "https://www.baidu.com",
+                        "分享测试", "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=275372394,2501331271&fm=27&gp=0.jpg",
+                        "测试APP", "https://www.baidu.com"
+                        , QZone.NAME, new PlatformActionListener() {
+                            @Override
+                            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                                Toast.makeText(MainActivity.this, "分享成功！", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onError(Platform platform, int i, Throwable throwable) {
+                                Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onCancel(Platform platform, int i) {
+
+                            }
+                        });
+                break;
+            case R.id.cl5://微博
+                ShareSDKUtils.shareSina("分享一个测试文本", "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=275372394,2501331271&fm=27&gp=0.jpg", MainActivity.this);
+                break;
+            case R.id.cl6:
+                ShareSDKUtils.thridPartyLogin(QQ.NAME, true, new PlatformActionListener() {
+                    @Override
+
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        if (platform.getName().equals(QQ.NAME)) {
+                            userName.setText(hashMap.get("nickname").toString());
+                        }
+                        Toast.makeText(MainActivity.this, "QQ授权成功！", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                break;
+            case R.id.cl7:
+                ShareSDKUtils.thridPartyLogin(QQ.NAME, false, new PlatformActionListener() {
+                    @Override
+
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        /*if (platform.getName().equals(QQ.NAME)) {
+                            hashMap.get("userName");
+                            userName.setText(platform.getDb().getUserName());
+                        }*/
+                        Toast.makeText(MainActivity.this, "取消QQ授权成功！", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull final String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // 将结果转发到EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        if (requestCode == REQUEST_CODE_CAMERA)
+            ShareSDKUtils.shareWX("分享内容", "分享测试", "https://www.baidu.com",
+                    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=275372394,2501331271&fm=27&gp=0.jpg",
+                    WechatMoments.NAME, Platform.SHARE_IMAGE, MainActivity.this);
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            new AppSettingsDialog.Builder(this).build().show();
+        }
+    }
+
+
+    @Override
+    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+        if (QQ.NAME.equals(platform.getName())) {
+            Toast.makeText(this, "QQ分享成功！", Toast.LENGTH_SHORT).show();
+        } else if (QZone.NAME.equals(platform.getName())) {
+            Toast.makeText(this, "QQ空间分享成功！", Toast.LENGTH_SHORT).show();
+        } else if (Wechat.NAME.equals(platform.getName())) {
+            Toast.makeText(this, "微信分享成功！", Toast.LENGTH_SHORT).show();
+        } else if (WechatMoments.NAME.equals(platform.getName())) {
+            Toast.makeText(this, "微信朋友圈分享成功！", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onError(Platform platform, int i, Throwable throwable) {
+
+    }
+
+    @Override
+    public void onCancel(Platform platform, int i) {
+
+    }
+
 }
