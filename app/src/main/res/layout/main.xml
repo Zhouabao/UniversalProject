@@ -123,17 +123,17 @@
             android:text="用户名："
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/userName1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/cl6"
-            android:layout_alignTop="@id/cl6"
-            android:layout_marginLeft="80dp"
-            android:layout_toRightOf="@id/cl6"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+        <!--<TextView-->
+            <!--android:id="@+id/userName1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBottom="@id/cl6"-->
+            <!--android:layout_alignTop="@id/cl6"-->
+            <!--android:layout_marginLeft="80dp"-->
+            <!--android:layout_toRightOf="@id/cl6"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="14sp" />-->
 
 
     </RelativeLayout>
