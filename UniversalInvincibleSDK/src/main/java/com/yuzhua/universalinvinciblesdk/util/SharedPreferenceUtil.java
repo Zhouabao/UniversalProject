@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 public class SharedPreferenceUtil {
+
     public static SharedPreferences mSharedPreferences;
     private final String PREFERENCE_NAME = Constant.PREFERENCE_NAME;
     private Context mContext;
@@ -34,15 +35,14 @@ public class SharedPreferenceUtil {
         if (sp == null) {
             sp = new SharedPreferenceUtil(context);
         }
-
         return sp;
     }
 
     /**
      * 得到String类型的key--value
      */
-    public String getPrefString(String item) {
-        return mSharedPreferences.getString(item, null);
+    public String getString(String value) {
+        return mSharedPreferences.getString(value, null);
     }
 
     public void saveString(String key, String value) {

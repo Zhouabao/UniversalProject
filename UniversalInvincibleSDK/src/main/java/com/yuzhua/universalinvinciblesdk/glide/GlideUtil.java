@@ -42,6 +42,22 @@ public class GlideUtil {
         return options;
     }
 
+    /**
+    返回的图片路径为Object类型，由于不能确定你到底使用的那种图片加载器，
+     传输的到的是什么格式，那么这种就使用Object接收和返回，你只需要强转成你传输的类型就行，
+     切记不要胡乱强转！
+     */
+
+    public static void loadImg(Context context, Object url, ImageView tartgetImg) {
+        RequestOptions options = new RequestOptions()
+                .error(R.drawable.empty_icon)
+                .priority(Priority.HIGH);
+        GlideApp.with(context)
+                .load(url)
+                .apply(options)
+                .into(tartgetImg);
+    }
+
 
     /**
      * 加载圆角图片
@@ -51,10 +67,45 @@ public class GlideUtil {
      * @param tartgetImg
      */
     public static void loadRoundImg(Context context, String url, ImageView tartgetImg) {
-        GlideApp.with(context)
+        Glide.with(context)
                 .load(url)
-                .transition(new DrawableTransitionOptions().crossFade(1000))//渐显效果
+                .apply(getOptions())
                 .into(tartgetImg);
+    }
+
+    /**
+     * 圆角图片加载
+     * @author leibing
+     * @createTime 2016/8/15
+     * @lastModify 2016/8/15
+     * @param context 上下文
+     * @param imageView 图片显示控件
+     * @param url 图片链接
+     * @param defaultImage 默认占位图片
+     * @param errorImage 加载失败后图片
+     * @param radius 图片圆角半径
+     * @return
+     */
+    public static void loadRoundImg(Context context, String url, ImageView imageView, int defaultImage,
+                            int errorImage , int radius){
+        //RequestOptions 设置请求参数，通过apply方法设置
+        RequestOptions options = new RequestOptions()
+                // 但不保证所有图片都按序加载
+                // 枚举Priority.IMMEDIATE，Priority.HIGH，Priority.NORMAL，Priority.LOW
+                // 默认为Priority.NORMAL
+                // 如果没设置fallback，model为空时将显示error的Drawable，
+                // 如果error的Drawable也没设置，就显示placeholder的Drawable
+                .priority(Priority.NORMAL) //指定加载的优先级，优先级越高越优先加载，
+                .placeholder(defaultImage)
+                .error(errorImage)
+                // 缓存原始数据
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .centerCrop()
+                .transform(new CornersTranform(radius));
+        // 图片加载库采用Glide框架
+        Glide.with(context).load(url).apply(options)
+                .transition(new DrawableTransitionOptions().crossFade())
+                .into(imageView);
 
     }
 

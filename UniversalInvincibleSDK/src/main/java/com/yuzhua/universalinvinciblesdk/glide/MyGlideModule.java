@@ -20,7 +20,7 @@ import java.io.InputStream;
 /**
  * @author Zhou Fengmei
  * @create 2018/4/20
- * @Describe  提交
+ * @Describe
  */
 @GlideModule
 public class MyGlideModule extends AppGlideModule {

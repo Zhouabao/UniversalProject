@@ -24,9 +24,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     //okhttp
@@ -45,4 +42,7 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.38'
     //toast
     implementation 'com.github.GrenderG:Toasty:1.2.8'
+    //loding
+    compile 'com.wang.avi:library:2.1.3'
+
 }
