@@ -21,7 +21,7 @@ import com.yuzhua.universalinvinciblesdk.util.LogUtils;
  * Created by Zhou Fengmei on 2018/4/12.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public  class BaseActivity extends AppCompatActivity {
 
     private TextView title;
     private ImageView back;
@@ -128,11 +128,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         initToolbar();
     }
 
-    //布局文件ID
-    protected abstract int getContentViewId();
-
     //布局中Fragment的ID
-    protected abstract int getFragmentContentId();
+    protected  int getFragmentContentId(){
+        return 0;
+    }
 
     //添加fragment
     protected void addFragment(BaseFragment fragment) {
