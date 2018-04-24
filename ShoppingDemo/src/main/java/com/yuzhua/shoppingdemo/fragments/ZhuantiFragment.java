@@ -22,17 +22,17 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AttentionFragment extends Fragment {
+public class ZhuantiFragment extends Fragment {
 
-    private static AttentionFragment fragment;
+    private static ZhuantiFragment fragment;
     @BindView(R.id.rv_reaction)
     RecyclerView rvReaction;
     Unbinder unbinder;
     private ArrayList<Object> ivs;
 
-    public static AttentionFragment newInstance() {
+    public static ZhuantiFragment newInstance() {
         if (fragment == null)
-            fragment = new AttentionFragment();
+            fragment = new ZhuantiFragment();
         return fragment;
     }
 
