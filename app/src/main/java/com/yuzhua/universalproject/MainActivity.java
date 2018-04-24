@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,8 +45,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         ButterKnife.bind(this);
-
-        setBackBtn();
         setSettingBtnImg(R.mipmap.bar_code_scan_icon);
         setTitle("测试主页");
         setSettingBtn(new View.OnClickListener() {
@@ -88,6 +87,10 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         return true;
     }
 
+    @Override
+    protected int getFragmentContentId() {
+        return 0;
+    }
 
     @OnClick({R.id.cl1, R.id.cl2, R.id.cl3, R.id.cl4, R.id.cl5, R.id.cl6, R.id.cl7})
     public void onViewClicked(View view) {

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ShoppingDemo/ShoppingDemo.iml" filepath="$PROJECT_DIR$/ShoppingDemo/ShoppingDemo.iml" />
+      <module fileurl="file://D:\Android\workspace\my\UniversalProject\ShoppingDemo\ShoppingDemo.iml" filepath="D:\Android\workspace\my\UniversalProject\ShoppingDemo\ShoppingDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/UniversalInvincibleSDK/UniversalInvincibleSDK.iml" filepath="$PROJECT_DIR$/UniversalInvincibleSDK/UniversalInvincibleSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/UniversalProject.iml" filepath="$PROJECT_DIR$/UniversalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

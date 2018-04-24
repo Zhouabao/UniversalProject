@@ -32,6 +32,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation project(':UniversalInvincibleSDK')
     implementation files('libs/zxing.jar')
+    implementation 'com.github.liuguangli:VerificationCodeInput:1.3'
+    implementation 'com.jacktuotuo.customview:verificationcodeview:1.0.3'
 }
 
 
