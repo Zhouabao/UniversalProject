@@ -6,11 +6,11 @@
     tools:context="com.yuzhua.shoppingdemo.fragments.ShoppingCartFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_goods"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></ListView>
+        android:layout_weight="1"></android.support.v7.widget.RecyclerView>
 
     <ImageView
         android:layout_width="wrap_content"
