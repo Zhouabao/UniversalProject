@@ -10,6 +10,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.yuzhua.shoppingdemo.fragments.IndexFragment;
+import com.yuzhua.shoppingdemo.fragments.MyFragment;
 import com.yuzhua.shoppingdemo.fragments.ShoppingCartFragment;
 import com.yuzhua.universalinvinciblesdk.base.BaseActivity;
 
@@ -44,7 +46,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        setTitle("商店");
+        hideToolbar();
         initView();
         setupViewPager(mViewpage);
 
@@ -104,10 +106,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             }
         });
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ShoppingCartFragment());
-        adapter.addFragment(new ShoppingCartFragment());
-        adapter.addFragment(new ShoppingCartFragment());
-        adapter.addFragment(new ShoppingCartFragment());
+        adapter.addFragment(new  IndexFragment());
+        adapter.addFragment(new IndexFragment());
+        adapter.addFragment(new  ShoppingCartFragment());
+        adapter.addFragment(new MyFragment());
         viewPager.setAdapter(adapter);
     }
 
