@@ -15,10 +15,6 @@ public class TestBaseActivity extends BaseActivity {
         setTitle("标题");
     }
 
-    @Override
-    protected int getContentViewId() {
-        return 0;
-    }
 
     @Override
     protected int getFragmentContentId() {

@@ -1,1 +1,1 @@
-include ':app', ':UniversalInvincibleSDK'
+include ':app', ':UniversalInvincibleSDK', ':ShoppingDemo'

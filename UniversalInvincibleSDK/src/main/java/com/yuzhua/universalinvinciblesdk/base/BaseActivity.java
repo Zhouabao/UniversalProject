@@ -21,14 +21,12 @@ import com.yuzhua.universalinvinciblesdk.util.LogUtils;
  * Created by Zhou Fengmei on 2018/4/12.
  */
 
-public  class BaseActivity extends AppCompatActivity {
-
+public class BaseActivity extends AppCompatActivity {
     private TextView title;
     private ImageView back;
     private ImageView set;
     private LinearLayout rootLayout;
     private Toolbar toolbar;
-
     protected final String TAG = this.getClass().getSimpleName();
 
     protected void setTitle(String msg) {
@@ -61,7 +59,7 @@ public  class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void setSetBtnImg(int id) {
+    protected void setSettingBtnImg(int id) {
         if (set != null) {
             set.setVisibility(View.VISIBLE);
             set.setImageDrawable(getResources().getDrawable(id));
@@ -70,7 +68,7 @@ public  class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void setSetBtn(View.OnClickListener l) {
+    protected void setSettingBtn(View.OnClickListener l) {
         if (set != null) {
             set.setVisibility(View.VISIBLE);
             set.setOnClickListener(l);
@@ -95,7 +93,7 @@ public  class BaseActivity extends AppCompatActivity {
         // 这句很关键，注意是调用父类的方法
         super.setContentView(R.layout.activity_base);
         AppManager.getAppManager().addActivity(this);
-        initToolbar();
+        //initToolbar();
     }
 
 
@@ -129,7 +127,7 @@ public  class BaseActivity extends AppCompatActivity {
     }
 
     //布局中Fragment的ID
-    protected  int getFragmentContentId(){
+    protected int getFragmentContentId() {
         return 0;
     }
 

@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ShoppingDemo" />
             <option value="$PROJECT_DIR$/UniversalInvincibleSDK" />
             <option value="$PROJECT_DIR$/app" />
           </set>
