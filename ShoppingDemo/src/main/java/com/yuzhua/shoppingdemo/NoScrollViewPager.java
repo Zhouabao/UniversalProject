@@ -7,10 +7,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
-/**
- * Created by guZhongC on 2018/1/11.
- * describe: 处理地图和Viewpage冲突
- */
 
 public class NoScrollViewPager extends ViewPager {
     private boolean noScroll = true;
