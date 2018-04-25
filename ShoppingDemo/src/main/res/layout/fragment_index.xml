@@ -1,71 +1,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.yuzhua.shoppingdemo.fragments.IndexFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <RadioGroup
-        android:id="@+id/rg_index"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="@color/black"
-        android:orientation="horizontal">
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/black"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/green"
+        app:tabTextColor="@color/white" />
 
-        <RadioButton
-            android:id="@+id/rb_zonghe"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:button="@null"
-            android:checked="true"
-            android:gravity="center"
-            android:text="综合"
-            android:textColor="@color/text_item_check"
-            android:textSize="12sp" />
 
-        <RadioButton
-            android:id="@+id/rb_fenlei"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:text="分类"
-            android:textColor="@color/text_item_check"
-            android:textSize="12sp" />
-
-        <RadioButton
-            android:id="@+id/rb_zhuanti"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:text="专题"
-            android:textColor="@color/text_item_check"
-            android:textSize="12sp" />
-
-        <RadioButton
-            android:id="@+id/rb_tuijian"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:text="推荐"
-            android:textColor="@color/text_item_check"
-            android:textSize="12sp" />
-    </RadioGroup>
-
-    <FrameLayout
-        android:id="@+id/content"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
 </LinearLayout>

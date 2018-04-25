@@ -1,22 +1,18 @@
 package com.yuzhua.shoppingdemo.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.yuzhua.shoppingdemo.activities.ProductDeatilActivity;
 import com.yuzhua.shoppingdemo.R;
 
-import java.util.ArrayList;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -25,47 +21,20 @@ import butterknife.Unbinder;
 public class ZongheFragment extends Fragment {
 
     private static ZongheFragment fragment;
-    @BindView(R.id.rv_reaction)
-    RecyclerView rvReaction;
     Unbinder unbinder;
-    private ArrayList<Object> ivs;
 
-    public static ZongheFragment newInstance() {
+    public synchronized static ZongheFragment newInstance() {
         if (fragment == null)
             fragment = new ZongheFragment();
         return fragment;
     }
 
-    private void initData() {
-        ivs = new ArrayList<>();
-        ivs.add(R.drawable.attention);
-        ivs.add(R.drawable.attention);
-        ivs.add(R.drawable.attention);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_attention, container, false);
+        View view = inflater.inflate(R.layout.fragment_zonghe, container, false);
         unbinder = ButterKnife.bind(this, view);
-        BaseQuickAdapter adapter = new BaseQuickAdapter(R.layout.item_attention, ivs) {
-            @Override
-            protected void convert(BaseViewHolder helper, Object item) {
-                helper.setImageResource(R.id.iv_item, (Integer) item);
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-            }
-        };
-        rvReaction.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                
-            }
-        });
         return view;
     }
 
@@ -73,5 +42,28 @@ public class ZongheFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick({R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_1:
+                getActivity().startActivity(new Intent(getActivity(), ProductDeatilActivity.class).putExtra("image", R.drawable.detail_1));
+                break;
+            case R.id.btn_2:
+                getActivity().startActivity(new Intent(getActivity(), ProductDeatilActivity.class).putExtra("image", R.drawable.detail_2));
+
+                break;
+            case R.id.btn_3:
+                getActivity().startActivity(new Intent(getActivity(), ProductDeatilActivity.class).putExtra("image", R.drawable.detail_2));
+
+                break;
+            case R.id.btn_4:
+                getActivity().startActivity(new Intent(getActivity(), ProductDeatilActivity.class).putExtra("image", R.drawable.detail_3));
+                break;
+            case R.id.btn_5:
+                getActivity().startActivity(new Intent(getActivity(), ProductDeatilActivity.class).putExtra("image", R.drawable.detail_3));
+                break;
+        }
     }
 }

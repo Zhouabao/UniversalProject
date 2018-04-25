@@ -3,9 +3,10 @@
     android:id="@+id/iv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="right"
     android:background="@android:color/white"
     android:orientation="horizontal"
-    android:scaleType="fitStart"
-    android:src="@drawable/attention">
+    android:scaleType="fitXY"
+    android:src="@drawable/zhuanti_1">
 
 </ImageView>

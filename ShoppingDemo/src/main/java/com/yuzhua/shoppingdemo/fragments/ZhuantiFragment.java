@@ -4,6 +4,7 @@ package com.yuzhua.shoppingdemo.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +29,9 @@ public class ZhuantiFragment extends Fragment {
     @BindView(R.id.rv_reaction)
     RecyclerView rvReaction;
     Unbinder unbinder;
-    private ArrayList<Object> ivs;
+    private ArrayList<Integer> ivs;
 
-    public static ZhuantiFragment newInstance() {
+    public synchronized static ZhuantiFragment newInstance() {
         if (fragment == null)
             fragment = new ZhuantiFragment();
         return fragment;
@@ -38,9 +39,9 @@ public class ZhuantiFragment extends Fragment {
 
     private void initData() {
         ivs = new ArrayList<>();
-        ivs.add(R.drawable.attention);
-        ivs.add(R.drawable.attention);
-        ivs.add(R.drawable.attention);
+        ivs.add(R.drawable.zhuanti_1);
+        ivs.add(R.drawable.zhuanti_2);
+        ivs.add(R.drawable.zhuanti_3);
     }
 
     @Override
@@ -48,22 +49,21 @@ public class ZhuantiFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_attention, container, false);
         unbinder = ButterKnife.bind(this, view);
-        BaseQuickAdapter adapter = new BaseQuickAdapter(R.layout.item_attention, ivs) {
+        initData();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvReaction.setLayoutManager(layoutManager);
+        BaseQuickAdapter adapter = new BaseQuickAdapter<Integer, BaseViewHolder>(R.layout.item_zhuanti, ivs) {
             @Override
-            protected void convert(BaseViewHolder helper, Object item) {
-                helper.setImageResource(R.id.iv_item, (Integer) item);
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+            protected void convert(BaseViewHolder helper, Integer item) {
+                helper.setImageResource(R.id.iv_item, item);
             }
         };
         rvReaction.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                
+
             }
         });
         return view;

@@ -1,9 +1,11 @@
 package com.yuzhua.shoppingdemo.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuzhua.shoppingdemo.R;
+import com.yuzhua.shoppingdemo.activities.PersonDetailActivity;
 
 import java.util.ArrayList;
 
@@ -28,9 +31,9 @@ public class AttentionFragment extends Fragment {
     @BindView(R.id.rv_reaction)
     RecyclerView rvReaction;
     Unbinder unbinder;
-    private ArrayList<Object> ivs;
+    private ArrayList<Integer> ivs;
 
-    public static AttentionFragment newInstance() {
+    public synchronized static AttentionFragment newInstance() {
         if (fragment == null)
             fragment = new AttentionFragment();
         return fragment;
@@ -48,22 +51,22 @@ public class AttentionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_attention, container, false);
         unbinder = ButterKnife.bind(this, view);
-        BaseQuickAdapter adapter = new BaseQuickAdapter(R.layout.item_attention, ivs) {
+        initData();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvReaction.setLayoutManager(layoutManager);
+        BaseQuickAdapter adapter = new BaseQuickAdapter<Integer, BaseViewHolder>(R.layout.item_attention, ivs) {
             @Override
-            protected void convert(BaseViewHolder helper, Object item) {
-                helper.setImageResource(R.id.iv_item, (Integer) item);
+            protected void convert(BaseViewHolder helper, Integer item) {
+                helper.setImageResource(R.id.iv_item, item);
             }
 
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-            }
         };
         rvReaction.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                
+                startActivity(new Intent(getActivity(), PersonDetailActivity.class));
             }
         });
         return view;

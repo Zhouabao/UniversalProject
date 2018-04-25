@@ -1,4 +1,4 @@
-package com.yuzhua.shoppingdemo;
+package com.yuzhua.shoppingdemo.activities;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -10,6 +10,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.yuzhua.shoppingdemo.NoScrollViewPager;
+import com.yuzhua.shoppingdemo.R;
+import com.yuzhua.shoppingdemo.ViewPagerAdapter;
+import com.yuzhua.shoppingdemo.fragments.AttentionFragment;
 import com.yuzhua.shoppingdemo.fragments.IndexFragment;
 import com.yuzhua.shoppingdemo.fragments.MyFragment;
 import com.yuzhua.shoppingdemo.fragments.ShoppingCartFragment;
@@ -24,7 +28,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
 
     @BindView(R.id.viewPager)
-    ViewPager mViewpage;
+    NoScrollViewPager mViewpage;
     @BindView(R.id.rb_home)
     RadioButton rbHome;
     @BindView(R.id.rb_nearby)
@@ -40,6 +44,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private ArrayList<Fragment> fragments;
     // 保存用户按返回键的时间
     private long mExitTime = 0;
+    private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     protected void initView() {
         fragments = new ArrayList<>();
+        fragments.add(IndexFragment.newInstance());
+        fragments.add(AttentionFragment.newInstance());
+        fragments.add(ShoppingCartFragment.newInstance());
+        fragments.add(MyFragment.newInstance());
+
         rgGroup.check(R.id.rb_home);
         rgGroup.setOnCheckedChangeListener(this);
     }
@@ -84,7 +94,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
             @Override
             public void onPageSelected(int position) {
-                Log.e(TAG, "onCheckedChanged: " +"  "+position );
                 switch (position) {
                     case 0:
                         rgGroup.check(R.id.rb_home);
@@ -105,12 +114,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             public void onPageScrollStateChanged(int state) {
             }
         });
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new  IndexFragment());
-        adapter.addFragment(new IndexFragment());
-        adapter.addFragment(new  ShoppingCartFragment());
-        adapter.addFragment(new MyFragment());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(fragments.size());
     }
 
     public void onBackPressed() {

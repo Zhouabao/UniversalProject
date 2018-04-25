@@ -1,11 +1,14 @@
 package com.yuzhua.shoppingdemo.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
 
 import com.yuzhua.shoppingdemo.R;
 
@@ -16,11 +19,15 @@ import butterknife.Unbinder;
 
 public class IndexFragment extends Fragment {
     private static IndexFragment fragment;
-    @BindView(R.id.rg_index)
-    RadioGroup rgIndex;
     Unbinder unbinder;
+    @BindView(R.id.tab)
+    TabLayout tab;
+    @BindView(R.id.viewpager)
+    ViewPager viewpager;
+    private String[] mTitle = new String[]{"综合", "分类", "专题", "推荐"};
+    private Fragment[] fragments = new Fragment[]{ZongheFragment.newInstance(), FenleiFragment.newInstance(), ZhuantiFragment.newInstance(), TuijianFragment.newInstance()};
 
-    public static IndexFragment newInstance() {
+    public synchronized static IndexFragment newInstance() {
         if (fragment == null)
             fragment = new IndexFragment();
         return fragment;
@@ -32,26 +39,35 @@ public class IndexFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_index, container, false);
         unbinder = ButterKnife.bind(this, view);
-        rgIndex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+        viewpager.setAdapter(new FragmentPagerAdapter(getActivity().getSupportFragmentManager()) {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.rb_zonghe) {
+            public Fragment getItem(int position) {
+                return fragments[position];
+            }
 
-                } else if (checkedId == R.id.rb_fenlei) {
+            @Override
+            public int getCount() {
+                return fragments.length;
+            }
 
-                } else if (checkedId == R.id.rb_zhuanti) {
-
-                } else if (checkedId == R.id.rb_tuijian) {
-
-                }
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mTitle[position];
             }
         });
+        tab.setupWithViewPager(viewpager);
+        viewpager.setOffscreenPageLimit(fragments.length);
         return view;
     }
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+
 }

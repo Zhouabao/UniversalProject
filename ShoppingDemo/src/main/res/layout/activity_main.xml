@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:id="@+id/main"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v4.view.ViewPager
+    <com.yuzhua.shoppingdemo.NoScrollViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-    </android.support.v4.view.ViewPager>
+        android:layout_weight="1" />
+
     <RadioGroup
         android:id="@+id/rg_group"
         android:layout_width="match_parent"
@@ -19,30 +18,32 @@
         android:layout_marginBottom="0dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <RadioButton
 
-            style="@style/tab_style"
             android:id="@+id/rb_home"
-            android:text="首页"
-            android:drawableTop="@drawable/selector_btn_home"/>
+            style="@style/tab_style"
+            android:drawableTop="@drawable/selector_btn_home"
+            android:text="首页" />
 
 
         <RadioButton
-            style="@style/tab_style"
             android:id="@+id/rb_nearby"
-            android:text="商家"
-            android:drawableTop="@drawable/selector_btn_fujing"/>
+            style="@style/tab_style"
+            android:drawableTop="@drawable/selector_btn_fujing"
+            android:text="关注" />
 
         <RadioButton
-            style="@style/tab_style"
             android:id="@+id/rb_shoppingcart"
-            android:text="购物车"
-            android:drawableTop="@drawable/selector_btn_gouwuche"/>
-        <RadioButton
             style="@style/tab_style"
+            android:drawableTop="@drawable/selector_btn_gouwuche"
+            android:text="购物车" />
+
+        <RadioButton
             android:id="@+id/rb_me"
-            android:text="我的"
-            android:drawableTop="@drawable/selector_btn_me"/>
+            style="@style/tab_style"
+            android:drawableTop="@drawable/selector_btn_me"
+            android:text="我的" />
     </RadioGroup>
 
 </LinearLayout>

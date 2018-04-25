@@ -15,7 +15,7 @@ public class MyFragment extends Fragment {
 
     private static MyFragment fragment;
 
-    public static MyFragment newInstance() {
+    public synchronized static MyFragment newInstance() {
         if (fragment == null)
             fragment = new MyFragment();
         return fragment;

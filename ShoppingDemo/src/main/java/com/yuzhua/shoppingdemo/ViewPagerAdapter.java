@@ -13,13 +13,19 @@ import java.util.List;
  * @Describe
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private  List<Fragment> mFragmentList = new ArrayList<>();
 
     private FragmentManager manager;
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
         manager = fm;
+    }
+
+    public ViewPagerAdapter(FragmentManager supportFragmentManager, ArrayList<Fragment> fragments) {
+        super(supportFragmentManager);
+        manager = supportFragmentManager;
+        mFragmentList = fragments;
     }
 
     @Override
@@ -32,7 +38,4 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return mFragmentList.size();
     }
 
-    public void addFragment(Fragment fragment) {
-        mFragmentList.add(fragment);
-    }
 }
