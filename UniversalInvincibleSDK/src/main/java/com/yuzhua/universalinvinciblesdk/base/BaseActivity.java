@@ -26,6 +26,7 @@ public class BaseActivity extends AppCompatActivity {
     private ImageView back;
     private ImageView set;
     private LinearLayout rootLayout;
+    private LinearLayout myRootLayout;
     private Toolbar toolbar;
     protected final String TAG = this.getClass().getSimpleName();
 
@@ -44,6 +45,16 @@ public class BaseActivity extends AppCompatActivity {
                     finish();
                 }
             });
+        } else {
+            LogUtils.e(TAG, "back is null ,please check out ");
+        }
+
+    }
+
+    protected void setBackBtnImg(int id) {
+        if (back != null) {
+            back.setVisibility(View.VISIBLE);
+            back.setImageDrawable(getResources().getDrawable(id));
         } else {
             LogUtils.e(TAG, "back is null ,please check out ");
         }
@@ -85,6 +96,22 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void ShowToolbar() {
+        if (toolbar != null) {
+                toolbar.setVisibility(View.VISIBLE);
+        } else {
+            LogUtils.e(TAG, "toolbar is null ,please check out");
+        }
+    }
+    protected void SetToolbarColor(int color) {
+        if (myRootLayout != null) {
+            myRootLayout.setBackgroundColor(getResources().getColor(color));
+//            toolbar.setBackgroundColor(getResources().getColor(color));
+        } else {
+            LogUtils.e(TAG, "toolbar is null ,please check out");
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +138,7 @@ public class BaseActivity extends AppCompatActivity {
         back = (ImageView) findViewById(R.id.toolbar_back);
         title = (TextView) findViewById(R.id.toolbar_title);
         set = (ImageView) findViewById(R.id.toolbar_set);
+        myRootLayout = findViewById(R.id.ly_main_actionbar);
     }
 
     @Override

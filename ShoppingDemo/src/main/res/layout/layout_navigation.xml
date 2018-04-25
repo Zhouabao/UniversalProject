@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="100dp"
+    android:paddingBottom="50dp"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/ll_navigation_uis"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:textColor="@color/teexclolor"
+            android:layout_weight="1"
+            android:text="UIS宝库"
+            android:drawableLeft="@mipmap/cehua1"
+            android:gravity="center_vertical"
+            android:drawablePadding="8dp"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:src="@mipmap/cehua_back"
+            android:paddingRight="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_navigation_news"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:textColor="@color/teexclolor"
+            android:layout_weight="1"
+            android:text="消息通知"
+            android:drawableLeft="@mipmap/cehua2"
+            android:gravity="center_vertical"
+            android:drawablePadding="8dp"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:src="@mipmap/cehua_back"
+            android:paddingRight="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+     android:id="@+id/ll_navigation_inform"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+    <TextView
+        android:textColor="@color/teexclolor"
+        android:layout_weight="1"
+        android:text="联系我们"
+        android:drawableLeft="@mipmap/cehua3"
+        android:gravity="center_vertical"
+        android:drawablePadding="8dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:src="@mipmap/cehua_back"
+        android:paddingRight="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+    <LinearLayout
+     android:id="@+id/ll_navigation_more"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+    <TextView
+        android:textColor="@color/teexclolor"
+        android:layout_weight="1"
+        android:text="跟多"
+        android:drawableLeft="@mipmap/cehua4"
+        android:gravity="center_vertical"
+        android:drawablePadding="8dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:src="@mipmap/cehua_back"
+        android:paddingRight="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+    <LinearLayout
+     android:id="@+id/ll_navigation_out"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+    <TextView
+        android:textColor="@color/teexclolor"
+        android:layout_weight="1"
+        android:text="退出账号"
+        android:drawableLeft="@mipmap/cehua5"
+        android:gravity="center_vertical"
+        android:drawablePadding="8dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:src="@mipmap/cehua_back"
+        android:paddingRight="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+</LinearLayout>

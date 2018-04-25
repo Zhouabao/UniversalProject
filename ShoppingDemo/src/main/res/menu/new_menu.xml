@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/favorite"
+            android:icon="@mipmap/cehua1"
+            android:checkable="true"
+            android:title="    会员"/>
+
+    </group>
+    <item
+        android:id="@+id/wallet"
+        android:icon="@mipmap/cehua2"
+
+        android:title="    钱包"/>
+    <item
+        android:id="@+id/photo"
+        android:icon="@mipmap/cehua3"
+        android:title="    相册"/>
+    <item
+        android:id="@+id/dress"
+        android:icon="@mipmap/cehua4"
+        android:title="    装扮"/>
+    <item
+        android:id="@+id/file"
+        android:icon="@mipmap/cehua5"
+        android:title="    文件"/>
+
+</menu>

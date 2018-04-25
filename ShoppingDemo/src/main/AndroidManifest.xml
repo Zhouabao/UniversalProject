@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".activities.ProductDeatilActivity" />
         <activity
             android:name=".activities.LoginActivity"
@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activitys.SearchActivity"></activity>
         <activity
             android:name=".activities.PersonDetailActivity"
             android:theme="@style/MyTheme"></activity>

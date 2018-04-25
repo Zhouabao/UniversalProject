@@ -18,6 +18,7 @@
     </style>
 
     <style name="tab_style">
+        <item name="android:padding">8dp</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@drawable/color_radiobutton</item>
         <item name="android:layout_weight">1</item>
