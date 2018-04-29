@@ -1,14 +1,14 @@
 package com.yuzhua.shoppingdemo.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -26,6 +26,12 @@ public class ShoppingCartFragment extends Fragment {
     @BindView(R.id.lv_goods)
     RecyclerView lvGoods;
     Unbinder unbinder;
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+    @BindView(R.id.toolbar_set)
+    TextView toolbarSet;
+    @BindView(R.id.ly_main_actionbar)
+    RelativeLayout lyMainActionbar;
     private List<Integer> ivs;
 
     public synchronized static ShoppingCartFragment newInstance() {
@@ -40,6 +46,11 @@ public class ShoppingCartFragment extends Fragment {
         ivs.add(R.drawable.cart_1);
         ivs.add(R.drawable.cart_2);
         ivs.add(R.drawable.cart_3);
+        lyMainActionbar.setVisibility(View.VISIBLE);
+        toolbarTitle.setText("购物车");
+        toolbarSet.setVisibility(View.VISIBLE);
+
+
     }
 
     @Override

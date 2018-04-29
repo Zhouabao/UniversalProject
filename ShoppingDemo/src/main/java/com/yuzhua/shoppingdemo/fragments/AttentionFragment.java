@@ -3,13 +3,14 @@ package com.yuzhua.shoppingdemo.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -31,6 +32,12 @@ public class AttentionFragment extends Fragment {
     @BindView(R.id.rv_reaction)
     RecyclerView rvReaction;
     Unbinder unbinder;
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+    @BindView(R.id.toolbar_set)
+    TextView toolbarSet;
+    @BindView(R.id.ly_main_actionbar)
+    RelativeLayout lyMainActionbar;
     private ArrayList<Integer> ivs;
 
     public synchronized static AttentionFragment newInstance() {
@@ -42,8 +49,10 @@ public class AttentionFragment extends Fragment {
     private void initData() {
         ivs = new ArrayList<>();
         ivs.add(R.drawable.attention);
-        ivs.add(R.drawable.attention);
-        ivs.add(R.drawable.attention);
+        lyMainActionbar.setVisibility(View.VISIBLE);
+        toolbarTitle.setText("关注");
+        toolbarSet.setVisibility(View.GONE);
+
     }
 
     @Override
