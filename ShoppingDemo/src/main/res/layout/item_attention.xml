@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:orientation="horizontal"
-    android:scaleType="fitStart"
+    android:scaleType="fitXY"
     android:src="@drawable/attention">
 
 </ImageView>

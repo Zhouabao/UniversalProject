@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
+    android:paddingTop="20dp"
     android:background="@android:color/white"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingRight="16dp">
 
     <CheckBox
         android:id="@+id/cb_item"
@@ -18,9 +19,10 @@
 
     <ImageView
         android:id="@+id/iv_item"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
+        android:scaleType="fitXY"
         android:src="@drawable/cart_1" />
 
 </LinearLayout>

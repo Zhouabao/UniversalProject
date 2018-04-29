@@ -47,12 +47,14 @@ public class AttentionFragment extends Fragment {
     }
 
     private void initData() {
-        ivs = new ArrayList<>();
-        ivs.add(R.drawable.attention);
         lyMainActionbar.setVisibility(View.VISIBLE);
-        toolbarTitle.setText("关注");
+        toolbarTitle.setText("我的关注");
         toolbarSet.setVisibility(View.GONE);
 
+        ivs = new ArrayList<>();
+        ivs.add(R.drawable.attention);
+        /*ivs.add(R.drawable.attention);
+        ivs.add(R.drawable.attention);*/
     }
 
     @Override

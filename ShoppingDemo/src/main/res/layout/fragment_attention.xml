@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context="com.yuzhua.shoppingdemo.fragments.AttentionFragment">
+    <include layout="@layout/head_layout" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_reaction"
