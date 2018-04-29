@@ -5,6 +5,8 @@
     android:orientation="vertical"
     tools:context="com.yuzhua.shoppingdemo.fragments.ShoppingCartFragment">
 
+    <include layout="@layout/head_layout" />
+
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_goods"
@@ -15,6 +17,6 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         android:src="@drawable/cart_4" />
 </LinearLayout>
