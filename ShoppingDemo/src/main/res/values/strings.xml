@@ -3,4 +3,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cart_string"><![CDATA[全选 &emsp  &emsp  &emsp  &emsp 合计：<font color=\'#1bb0b7\'>0元</font> ]]></string>
 </resources>
